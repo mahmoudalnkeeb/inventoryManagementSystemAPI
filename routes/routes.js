@@ -2,7 +2,7 @@ const productsRoutes = require('./apis/products_routes')
 const router = require('express').Router();
 
 router.get('/', (req , res)=>{
-    res.render('index.html')
+    res.send('api is running');
 })
 router.use('/products',productsRoutes)
 
