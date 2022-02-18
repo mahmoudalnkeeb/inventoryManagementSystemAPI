@@ -19,7 +19,7 @@ readOne = async (req, res) => {
   }
 };
 create = async (req, res) => {
-  const productToAdd = product.findOne({ name: req.body.names });
+  const productToAdd = product.findOne({ name: req.body.name });
   if (productToAdd == null) {
     const newProduct = new product({
       name: req.body.name,

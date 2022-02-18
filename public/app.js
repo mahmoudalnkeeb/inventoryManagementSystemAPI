@@ -31,13 +31,13 @@ create.addEventListener('click', async () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-    name:"product" ,
-    price:15 ,
-    taxes: 5,
-    ads:1 ,
-    discount:2,
-    count:20 ,
-    category:"products" ,
+      name: 'product',
+      price: 15,
+      taxes: 5,
+      ads: 1,
+      discount: 2,
+      count: 20,
+      category: 'products',
     }),
   });
   const data = await res.json();
