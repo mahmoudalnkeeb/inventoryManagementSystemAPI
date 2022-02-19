@@ -2,12 +2,19 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose  = require('./config/db');
 const errHandler = require('./middlewares/errorHandler');
+const cors = require('cors');
 const app = express();
 const routes = require('./routes/routes');
 
 //middlewares
 
 mongoose;
+app.use(
+  cors({
+    optionsSuccessStatu: 200,
+    origin: '*',
+  })
+);
 app.use(express.static('./public'));
 app.use(bodyParser.json());
 app.use(routes);
