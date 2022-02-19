@@ -33,15 +33,15 @@
 
     in case of search by name
 
-    `https://imsapi.onrender.com/products?name=product_name`
+    `https://imsapi.onrender.com/products/search?name=product_name`
 
     in case of search by price
 
-    `https://imsapi.onrender.com/products?price=product_price`
+    `https://imsapi.onrender.com/products/search?price=product_price`
 
     in case of search by category
 
-    `https://imsapi.onrender.com/products?category=category_name`
+    `https://imsapi.onrender.com/products/search?category=category_name`
 
 - METHOD
 
