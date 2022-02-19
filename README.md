@@ -18,10 +18,15 @@
 - ENDPOINT
 
     in case of search by name
+
     `https://imsapi.onrender.com/products?name=product_name`
+
     in case of search by price
+
     `https://imsapi.onrender.com/products?price=product_price`
+
     in case of search by category
+
     `https://imsapi.onrender.com/products?category=category_name`
 
 - METHOD
@@ -46,11 +51,17 @@
 
     
     name : string
+
     price : number
+
     taxes : number
+
     ads : number
+
     discount : number
+
     count : number
+
     category : string 
     
 
@@ -67,11 +78,17 @@
 - BODY
 
     name : string
+
     price : number
+
     taxes : number
+
     ads : number
+
     discount : number
+
     count : number
+    
     category : string 
 
 ## Delete Product
