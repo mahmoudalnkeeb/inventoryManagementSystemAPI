@@ -15,11 +15,11 @@ readOne = async (req, res) => {
       res.status(200).json(products);
     }
     if (req.query.price) {
-      const products = await product.findOne({ price: req.query.name });
+      const products = await product.find({ price: req.query.name });
       res.status(200).json(products);
     }
     if (req.query.category) {
-      const products = await product.findOne({ category: req.query.name });
+      const products = await product.find({ category: req.query.name });
       res.status(200).json(products);
     }
   } catch (error) {
@@ -55,7 +55,7 @@ create = async (req, res) => {
 update = async (req, res) => {
   try {
     const updatedProduct = await product.findOneAndUpdate(
-      { name: req.body.filter },
+      { _id: req.body.filter },
       req.body
     );
     res.status(200).json(`product ${updatedProduct.name} deleted`);
@@ -66,7 +66,7 @@ update = async (req, res) => {
 deleteOne = async (req, res) => {
   try {
     const deletedProduct = await product.findOneAndDelete({
-      name: req.body.filter,
+      _id: req.body.filter,
     });
     res.status(200).json(`product ${deletedProduct.name} deleted`);
   } catch (error) {
