@@ -4,6 +4,10 @@ read = async (req, res) => {
   const products = await product.find();
   res.status(200).json(products);
 };
+readSold = async (req, res) => {
+  const products = await product.find({ count: 0 });
+  res.status(200).json(products);
+};
 readOne = async (req, res) => {
   try {
     if (req.query.name) {
@@ -25,7 +29,6 @@ readOne = async (req, res) => {
 create = async (req, res) => {
   try {
     const productToAdd = await product.findOne({ name: req.body.name });
-    console.log(productToAdd == null);
     if (!productToAdd) {
       const newProduct = new product({
         name: req.body.name,
@@ -55,7 +58,6 @@ update = async (req, res) => {
       { name: req.body.filter },
       req.body
     );
-    console.log(req.body);
     res.status(200).json(`product ${updatedProduct.name} deleted`);
   } catch (error) {
     return error;
@@ -72,4 +74,4 @@ deleteOne = async (req, res) => {
   }
 };
 
-module.exports = { read, readOne, create, update, deleteOne };
+module.exports = { read, readOne, create, update, deleteOne, readSold };
