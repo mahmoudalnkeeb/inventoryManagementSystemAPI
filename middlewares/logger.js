@@ -6,13 +6,13 @@ const logger = (req, res, next) => {
       `Request: 
          BODY: ${req.body}
          PATH: ${req.path} 
-         from ip ${JSON.stringify(results['Ethernet'][0])} `
+         from ip ${JSON.stringify(results)} `
     );
     next();
   } else {
     console.log(
       `Request: ${req.method} ${req.path} from ip ${JSON.stringify(
-        results['Ethernet'][0]
+        results
       )} `
     );
     next();
