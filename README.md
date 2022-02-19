@@ -13,6 +13,20 @@
 - BODY
 
     - N/A
+ 
+## Get All Sold Out Products
+
+- ENDPOINT
+
+    `https://imsapi.onrender.com/products/sold`
+
+- METHOD
+
+    - GET
+
+- BODY
+
+    - N/A
 ## Get One Product
 
 - ENDPOINT
