@@ -91,6 +91,8 @@
 
 - BODY
 
+    filter : product id => string
+
     name : string
 
     price : number
@@ -117,4 +119,4 @@
 
 - BODY
 
-    name : string
+    filter : product id => string
