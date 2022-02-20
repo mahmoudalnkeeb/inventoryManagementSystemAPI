@@ -16,6 +16,7 @@ app.use(
     origin: '*',
   })
 );
+app.use(express.json());
 app.use(logger);
 app.use(errHandler);
 app.use(express.static('./public'));

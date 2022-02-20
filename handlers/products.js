@@ -54,9 +54,17 @@ update = async (req, res) => {
   try {
     const updatedProduct = await product.findOneAndUpdate(
       { _id: req.body.filter },
-      req.body
+      {
+        name: req.body.name,
+        price: req.body.price,
+        taxes: req.body.taxes,
+        ads: req.body.ads,
+        discount: req.body.discount,
+        count: req.body.count,
+        category: req.body.category,
+      }
     );
-    res.status(200).json(`product ${updatedProduct.name} deleted`);
+    res.status(200).json(`${updatedProduct.name} updated`);
   } catch (error) {
     return error;
   }
