@@ -13,13 +13,11 @@ readOne = async (req, res) => {
     if (req.query.name) {
       const products = await product.findOne({ name: req.query.name });
       res.status(200).json(products);
-    }
-    if (req.query.price) {
-      const products = await product.find({ price: req.query.name });
+    } else if (req.query.price) {
+      const products = await product.find({ price: req.query.price });
       res.status(200).json(products);
-    }
-    if (req.query.category) {
-      const products = await product.find({ category: req.query.name });
+    } else if (req.query.category) {
+      const products = await product.find({ category: req.query.category });
       res.status(200).json(products);
     }
   } catch (error) {
