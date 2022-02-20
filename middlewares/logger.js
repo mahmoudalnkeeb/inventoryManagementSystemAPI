@@ -4,7 +4,8 @@ const logger = (req, res, next) => {
   if (req.method == 'POST' || req.method == 'PUT') {
     console.log(
       `Request: 
-        BODY: ${req.body}
+        METHOD: ${req.method}
+        BODY: ${JSON.stringify(req.body)}
         PATH: ${JSON.stringify(req.path)} 
         IP: from ip ${JSON.stringify(results)} `
     );
