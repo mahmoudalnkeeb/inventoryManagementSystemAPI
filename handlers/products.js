@@ -69,15 +69,29 @@ update = async (req, res) => {
     return error;
   }
 };
+
+
+
+//Risky Should have authorization
+
 deleteOne = async (req, res) => {
   try {
     const deletedProduct = await product.findOneAndDelete({
       _id: req.body.filter,
     });
-    res.status(200).json(`product ${deletedProduct.name} deleted`);
+    res.status(200).json(`${deletedProduct.name} IS PERMANENTLY DELETED`);
   } catch (error) {
     return error;
   }
 };
 
-module.exports = { read, readOne, create, update, deleteOne, readSold };
+deleteAll = async (req, res) => {
+  try {
+    const deletedProduct = await product.deleteMany();
+    res.status(200).json(`ALL PRODUCTS HAVE BEEN PERMANENTLY REMOVED`);
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { read, readOne, create, update, deleteOne, readSold , deleteAll };
