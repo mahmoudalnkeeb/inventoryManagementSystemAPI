@@ -64,13 +64,13 @@ update = async (req, res) => {
         category: req.body.category,
       }
     );
-    res.status(200).json(`${updatedProduct.name} updated`);
+    res.status(200).json({
+      message: `${updatedProduct.name} updated`,
+    });
   } catch (error) {
     return error;
   }
 };
-
-
 
 //Risky Should have authorization
 
@@ -79,7 +79,7 @@ deleteOne = async (req, res) => {
     const deletedProduct = await product.findOneAndDelete({
       _id: req.body.filter,
     });
-    res.status(200).json(`${deletedProduct.name} IS PERMANENTLY DELETED`);
+    res.status(200).json({ message: `${updatedProduct.name} updated` });
   } catch (error) {
     return error;
   }
@@ -88,10 +88,20 @@ deleteOne = async (req, res) => {
 deleteAll = async (req, res) => {
   try {
     const deletedProduct = await product.deleteMany();
-    res.status(200).json(`ALL PRODUCTS HAVE BEEN PERMANENTLY REMOVED`);
+    res
+      .status(200)
+      .json({ message: `ALL PRODUCTS HAVE BEEN PERMANENTLY REMOVED` });
   } catch (error) {
     return error;
   }
 };
 
-module.exports = { read, readOne, create, update, deleteOne, readSold , deleteAll };
+module.exports = {
+  read,
+  readOne,
+  create,
+  update,
+  deleteOne,
+  readSold,
+  deleteAll,
+};
