@@ -74,16 +74,28 @@ update = async (req, res) => {
 
 //Risky Should have authorization
 
+let admin = {
+  user: 'dad6df1829777ebc57ef0ae3b6bf4eda8cf1e0101abc1b02528d3c4b27a90288',
+  pass: '8d87be07f7dbaf5faf91d7d690fd388396ae7b392a683bc5ed923ce10858125b',
+};
+
 deleteOne = async (req, res) => {
-  try {
-    const deletedProduct = await product.findOneAndDelete({
-      _id: req.body.filter,
-    });
-    res.status(200).json({ message: `${updatedProduct.name} updated` });
-  } catch (error) {
-    return error;
+  if (req.body.pass != admin.pass && req.body.user == admin.user) {
+    res.status(401).json({ user: true, pass: false });
+  } else if (req.body.user != admin.user && req.body.pass == admin.pass) {
+    res.status(401).json({ user: false, pass: true });
+  } else if (req.body.user == admin.user && req.body.pass == admin.pass) {
+    try {
+      const deletedProduct = await product.findOneAndDelete({
+        _id: req.body.filter,
+      });
+      res.status(200).json({ message: `${updatedProduct.name} updated` });
+    } catch (error) {
+      return error;
+    }
   }
 };
+
 
 deleteAll = async (req, res) => {
   try {
