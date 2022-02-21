@@ -1,14 +1,20 @@
-const results = require('../utils/getReqIp');
+const fetch = require('node-fetch');
 
-const logger = (req, res, next) => {
+const logger = async (req, res, next) => {
   const body = JSON.stringify(req.body);
+  const response = await fetch('http://ip-api.com/json/');
+  const data = await response.json();
+  const reqData = data;
   if (req.method == 'POST' || req.method == 'PUT') {
     console.log(
       `Request: 
         METHOD: ${req.method}
         BODY: ${body}
         PATH: ${req.path} 
-        IP: from ip ${JSON.stringify(results)} `
+        IP:  ${reqData.query} 
+        COUNTRY:  ${reqData.country} 
+        REGION:  ${reqData.regionName}
+        `
     );
     next();
   } else {
@@ -16,7 +22,7 @@ const logger = (req, res, next) => {
       `Request: 
         METHOD: ${req.method}
         PATH: ${req.path}
-        IP: from ip ${JSON.stringify(results)} `
+        IP: from ip ${ip} `
     );
     next();
   }
