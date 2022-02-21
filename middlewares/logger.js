@@ -22,7 +22,9 @@ const logger = async (req, res, next) => {
       `Request: 
         METHOD: ${req.method}
         PATH: ${req.path}
-        IP: from ip ${ip} `
+        IP:  ${reqData.query} 
+        COUNTRY:  ${reqData.country} 
+        REGION:  ${reqData.regionName} `
     );
     next();
   }
