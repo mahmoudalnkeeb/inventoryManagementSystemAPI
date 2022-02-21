@@ -89,7 +89,7 @@ deleteOne = async (req, res) => {
       const deletedProduct = await product.findOneAndDelete({
         _id: req.body.filter,
       });
-      res.status(200).json({ message: `${updatedProduct.name} updated` });
+      res.status(200).json({ message: `${deletedProduct.name} updated` });
     } catch (error) {
       return error;
     }
