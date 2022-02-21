@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const mongoose  = require('./config/db');
+const mongoose = require('./config/db');
 const errHandler = require('./middlewares/errorHandler');
 const cors = require('cors');
 const app = express();
@@ -16,13 +16,19 @@ app.use(
     origin: '*',
   })
 );
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(express.json());
 app.use(logger);
 app.use(errHandler);
 app.use(express.static('./public'));
-app.use(bodyParser.json());
 app.use(routes);
 
+// server listen
 
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || 'http://127.0.0.1';
